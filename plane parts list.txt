@@ -1,0 +1,33 @@
+
+
+solar cells:
+Assumptions:
+- 60W cruising power
+- power efficiency: 60% NOT SURE
+- Winter daylight/24 = 1/3 at worst (winter)
+
+power output required: 60 * 3 = 180 W
+Advertised power output required = 180 / 0.6 = 300 W
+cell output 4.48 W
+num of cells required = 68
+2 rows: length = 5.3m width = 0.32m
+
+w
+cost of 100 pieces = 65.44 eur free shipping
+https://www.aliexpress.com/item/32879982623.html?spm=a2g0o.productlist.0.0.f4201151LfpOoT&algo_pvid=f5f924e8-9e2e-49c1-833f-0c9ecd561302&algo_expid=f5f924e8-9e2e-49c1-833f-0c9ecd561302-57&btsid=2100bdca16147118282156924eba49&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+
+
+Batteries:
+85 3.3Ah 3.6v lithium batteries 
+weight = 85 * 0.0485 = 4.1225 kg
+Energy stored = 85 * 3.3 * 3.6 * 10 ^ -3 = 1.0098 Kwh
+18.5 mm diameter 67.5mm length
+
+
+cost 100: 178.43 eur with shipping
+// enough space for single column stacked batteries in (wing spar + tail spar)
+https://www.aliexpress.com/item/32807032859.html?spm=a2g0o.productlist.0.0.285e51fdBDJdHs&algo_pvid=f37058b4-0059-49f9-84e2-081ae976ecd6&algo_expid=f37058b4-0059-49f9-84e2-081ae976ecd6-1&btsid=2100bb5116147093891823194e38da&ws_ab_test=searchweb0_0,searchweb201602_,searchweb201603_
+
+
+carbon spars:
+wingspan: 5.3 m 
