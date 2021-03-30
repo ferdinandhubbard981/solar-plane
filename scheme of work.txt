@@ -1,0 +1,35 @@
+fully design wings
+- wing length, width, rib spacing
+- ailerons
+- servo mount/ control
+- fuselage mount 
+- cable routing (solar cells, mppt, batteries)
+- mppt mount
+- solar cell placement
+- battery placement
+- wing tips
+
+
+fully design avionics system
+- choose propeller -> motor -> gearbox -> esc combination
+- choose flight computer/controller
+- power splitter for esc/flight computer (to be researched)
+- sensors (altimeter/ gyroscope/ gps/ accelerometer/ airspeed sensor?/ magnetometers?)
+- rc receiver/ satcom?
+- camera/ storage?
+
+fully design fuselage
+- all 3d-printed
+- mount for all avionics
+- built-in mount for motor/ gearbox
+- hole for cables
+- mount for potential payload?
+- wood square? boom to connect tail
+
+fully design tail
+- rudder/ elevator
+- rib structure?
+- shape? area?
+- rotatable part/ hinge
+- servo mount/ control
+- mount to boom
