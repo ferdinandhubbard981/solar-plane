@@ -1,28 +1,28 @@
 fully design wings
-- wing length, width, rib spacing
+- wing length, width, rib spacing, centre of mass
 - ailerons
 - servo mount/ control
-- fuselage mount 
+- fuselage mount
+- solar cell placement
+- battery placement 
 - cable routing (solar cells, mppt, batteries)
 - mppt mount
-- solar cell placement
-- battery placement
 - wing tips
 
 
 fully design avionics system
 - choose propeller -> motor -> gearbox -> esc combination
 - choose flight computer/controller
-- power splitter for esc/flight computer (to be researched)
+- power splitter for esc/flight computer (to be researched) pdb? nothing?
 - sensors (altimeter/ gyroscope/ gps/ accelerometer/ airspeed sensor?/ magnetometers?)
 - rc receiver/ satcom?
 - camera/ storage?
 
 fully design fuselage
-- all 3d-printed
+- all 3d-printed two halves
 - mount for all avionics
 - built-in mount for motor/ gearbox
-- hole for cables
+- hole for cables/ sensors/ mount
 - mount for potential payload?
 - wood square? boom to connect tail
 
