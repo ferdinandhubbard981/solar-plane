@@ -1,0 +1,26 @@
+
+-full airfoil:
+	- 16mm
+	- 19mm
+
+
+- front half aileron airfoil:
+	- 16mm
+	- 19mm
+
+
+- back half aileron airfoil:
+	- 16mm
+	- 19mm
+
+
+- full airfoil adjacent to aileron airfoil:
+	- 16mm
+	- 19mm
+
+
+
+
+
+
+

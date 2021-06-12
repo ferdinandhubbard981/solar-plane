@@ -2,11 +2,11 @@ fully design wings
 - wing length, width, rib spacing, centre of mass
 - ailerons
 - servo mount/ control
-- fuselage mount
 - solar cell placement
 - battery placement 
 - cable routing (solar cells, mppt, batteries)
 - mppt mount
+- fuselage mount
 - wing tips
 
 
