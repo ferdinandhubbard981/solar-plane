@@ -1,0 +1,56 @@
+Carbon fibre parts: 
+
+Epoxy resin
+
+Hardener
+
+Carbon fibre cloth
+
+Anti attach stuff
+
+PVC tubes 
+
+Wood ~60mmm thick >100x600mm (mould)
+
+
+Wood 2mm thick >340x2000mm
+
+Wing covering 
+
+Spot welder?
+
+Bearings 
+
+Wire
+
+Clamp
+
+Battery tubes 
+
+
+Avionics:
+
+Motor 
+
+Esc
+
+Planetary gearbox 5:1
+
+Servos
+
+Flight controller
+
+Receiver
+
+Emitter
+
+GPS
+
+sensors?
+
+power splitter?
+
+
+Dustmask
+
+Goggles
