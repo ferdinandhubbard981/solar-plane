@@ -1,0 +1,4 @@
+. make curing oven
+. roll wrap carbon fibre tubes
+. cut wing ribs
+
