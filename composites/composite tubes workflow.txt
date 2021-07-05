@@ -13,6 +13,7 @@ gloves
 squeegee
 brush
 phone for timer
+rolling board
 oven setup to preheat
 
 
@@ -29,7 +30,7 @@ specific:
 . set timer 10 - 15 min
 . preheat easy bake oven at 120 celcius
 . wait till timer end
-. roll wet carbon fibre around tube (2 layers?)
+. roll wet carbon fibre around tube with rolling board(2 layers?)
 . wrap wet CF tube in shrink film (use some tape where required)
 . put tube in oven at 120 celcius for (1h30 - 2h)?
 

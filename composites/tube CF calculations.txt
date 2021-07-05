@@ -1,0 +1,5 @@
+8 mm diameter tube:
+radius = r = 4 mm
+num of layers around tube = n = 2 ?
+length of cut = 2 * pi * r * n = 50.3 mm
+width of cut = 1m (no cut because width = 1m already)

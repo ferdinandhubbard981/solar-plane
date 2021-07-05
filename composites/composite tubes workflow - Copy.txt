@@ -1,0 +1,46 @@
+tools/ materials:
+CF (50.3 mm x 1000mm)
+shrink film
+scissors
+mandrel + sticky film
+surface covering stuff
+epoxy & hardener
+cups
+scale
+release agent
+mixing stick
+gloves
+squeegee
+brush
+phone for timer
+rolling board
+oven setup to preheat
+
+
+specific:
+. cut carbon fibre
+. wrap aluminum mandrel in film
+. cut shrink film
+. cover surfaces
+. lay down CF fabric on work surface
+. measure epoxy & hardener in cups
+. apply release agent to film covered mandrel
+. mix the epoxy (remember to transfer from cup to cup once or twice)
+. apply epoxy to CF fabric (using squeegee & brush)
+. set timer 10 - 15 min
+. preheat easy bake oven at 120 celcius
+. wait till timer end
+. roll wet carbon fibre around tube with rolling board(2 layers?)
+. wrap wet CF tube in shrink film (use some tape where required)
+. put tube in oven at 120 celcius for (1h30 - 2h)?
+
+
+
+Main:
+. wrap film around mandrel + apply release agent
+. mix epoxy
+. apply epoxy to CF fabric
+. (wait 10-15 min for CF fabric to stiffen a bit for ease of rolling)
+. wrap wet carbon fibre around tube
+. wrap wet CF tube in shrink film
+. put tube in oven
