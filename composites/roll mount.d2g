@@ -1,0 +1,12 @@
+# +~+~+~ DXF2GCODE project file V1.2 ~+~+~+
+d2g.file = ""
+d2g.point_tol = 0.001
+d2g.fitting_tol = 0.001
+d2g.scale = 1.0
+d2g.rot = 0.0
+d2g.wpzero_x = 0.0
+d2g.wpzero_y = 0.0
+d2g.split_lines = True
+d2g.aut_cut_com = True
+d2g.machine_type = "milling"
+d2g.layers = [{'name': '0', 'tool_nr': 1, 'diameter': 3.13, 'speed': 16000.0, 'start_radius': 1.56, 'retract': 2.5, 'safe_margin': 2.5, 'shapes': [{'hash_': '1c278fee43b08dae124fec843e6db03104cdf942', 'cut_cor': 41, 'cw': True, 'send_to_TSP': True, 'disabled': False, 'start_mill_depth': 0.0, 'slice_depth': -1.5, 'mill_depth': -15.0, 'f_g1_plane': 150.0, 'f_g1_depth': 15.0, 'start_x': 0.0, 'start_y': 32.499999999999986}, {'hash_': 'fd597c6dd505ec9232f25d1b670eab8d2102eb31', 'cut_cor': 42, 'cw': True, 'send_to_TSP': True, 'disabled': False, 'start_mill_depth': 0.0, 'slice_depth': -1.5, 'mill_depth': -15.0, 'f_g1_plane': 150.0, 'f_g1_depth': 15.0, 'start_x': 16.81801948466054, 'start_y': 16.81801948466054}]}]

@@ -1,0 +1,73 @@
+(Generated with: DXF2GCODE, Version: Py3.6.7 PyQt5.11.3, Date: $Date: Fri Oct 25 20:45:56 2019 +0200 $)
+(Created from file: )
+(Output format description: G-CODE)
+(Time: Fri Jul  9 10:16:25 2021)
+G21 (Units in millimeters)
+G90 (Absolute programming)
+G64 (Default cutting) G17 (XY plane) G40 (Cancel radius comp.) G49 (Cancel length comp.)
+G0 Z   2.000 
+
+(*** LAYER: 0 ***)
+T1 M6
+S16000
+
+(* SHAPE Nr: 1 *)
+G0 X  17.925 Y  17.925
+M3 M8
+G0 Z   2.500 
+F15
+G1 Z  -1.500
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z  -3.000
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z  -4.500
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z  -6.000
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z  -7.500
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z  -9.000
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z -10.500
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z -12.000
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z -13.500
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z -15.000
+F150
+G2 X  22.075 Y  22.075 I   2.075 J   2.075
+G2 X  17.925 Y  17.925 I  -2.075 J  -2.075
+F15
+G1 Z   2.500
+G0 Z   2.500 
+M9 M5
+G0 X   0.000 Y   0.000
+M2 (Program end)
