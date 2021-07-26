@@ -1,0 +1,1 @@
+for sweep 3d: w, r, h

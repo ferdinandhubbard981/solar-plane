@@ -9,10 +9,17 @@ def findParralelWidth(r): #function that matches my parralel width requirements
         a0 = -200/49
         a1 = 4/7
         a2 = 0.01
-    else:
-        a0 = -100/429
-        a1 = 7/429
-        a2 = 0.03
+
+    elif r > 0.07 and r <= 0.32:
+        a0 = -1/4
+        a1 = 7/400
+        a2 = 3/100
+
+    elif r > 0.32:
+        a0 = -100
+        a1 = 64
+        a2 = -1023/100
+
     return a0 * pow(r, 2) + a1 * r + a2
 
 
@@ -31,16 +38,29 @@ def findroot(r, o):
 def findHoriWidth(r, h):
     return 2 * r * atan((pi * h) / d)
 
+def formdatastring(r, h, w, fullstring):
+    outputstr = str(r * 1000) + " " + str(h * 1000) + " " + str(w * 1000)
+    print(outputstr)
+    fullstring += outputstr + "\n"
+    return fullstring
 
 fullstring = ""
-for i in range(1, 331):
+r = 0
+o = findParralelWidth(r)
+h = o
+w = findHoriWidth(r, h)
+fullstring = formdatastring(r, h, w, fullstring)
+
+for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
     r = i * 0.001
-    o = findParralelWidth(r)
+    if i == 330: #because autodesk joins 3d guide line and 2d sweep line togeter because they share a point otherwise
+        o = 0.001
+    else:
+        o = findParralelWidth(r)
     h = findroot(r, o)
     w = findHoriWidth(r, h)
-    outputstr = str(r * 1000) + " " + str(h * 1000) + " " + str(w * 1000)
-    print(outputstr + " " + str(o))
-    fullstring += outputstr + "\n"
+    fullstring = formdatastring(r, h, w, fullstring)
+
 
 
 f = open("file.txt", "w+")
