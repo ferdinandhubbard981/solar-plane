@@ -30,7 +30,7 @@ def f(r, h, o):
     return (pi * h - d * atan((pow(pow(o, 2) - pow(h, 2), 0.5))/(2 * r)))
 
 
-def findroot(r, o):
+def findh(r, o):
     result = brentq(lambda h:f(r, h, o), 0, o)
     #print(result)
     return result
@@ -39,7 +39,7 @@ def findHoriWidth(r, h):
     return 2 * r * atan((pi * h) / d)
 
 def formdatastring(r, h, w, fullstring):
-    outputstr = str(r * 1000) + " " + str(h * 1000) + " " + str(w * 1000)
+    outputstr = str(w * -1000) + " " + str(r * 1000) + " " + str(h * 1000)
     print(outputstr)
     fullstring += outputstr + "\n"
     return fullstring
@@ -57,7 +57,7 @@ for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lin
         o = 0.001
     else:
         o = findParralelWidth(r)
-    h = findroot(r, o)
+    h = findh(r, o)
     w = findHoriWidth(r, h)
     fullstring = formdatastring(r, h, w, fullstring)
 
