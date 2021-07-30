@@ -54,7 +54,7 @@ fullstring = formdatastring(r, h, w, fullstring)
 for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
     r = i * 0.001
     if i == 330: #because autodesk joins 3d guide line and 2d sweep line togeter because they share a point otherwise
-        o = 0.001
+        o = 0.0001
     else:
         o = findParralelWidth(r)
     h = findh(r, o)
