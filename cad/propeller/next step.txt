@@ -1,1 +1,1 @@
-check direction of rotation to see if 3d spline or 2d airfoil orientation need to be changed
+check function to gradually increase h (as a percentage) to normal value after connection
