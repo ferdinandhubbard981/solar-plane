@@ -8,7 +8,10 @@ d = 0.6  #pitch = 0.6 m
 def findParralelWidth(r): #function that matches my parralel width requirements
     if r <= 0.02:
         return 15 * 0.001 #for connection between two bades
-    if r > 0.02 and r <= 0.07:
+    #elif r > 0.02 and r < 0.04:
+    #    return findParralelWidth(0.02) + (findParralelWidth(0.04) - findParralelWidth(0.02)) * (r - 0.02)/(0.04 - 0.02)
+    elif r > 0.02 and r <= 0.07:
+
         a0 = -8
         a1 = 28/25
         a2 = -23/2500
@@ -36,16 +39,23 @@ def f(r, h, o):
 def findh(r, o):
     if r <= 0.02:
         hval = 0
+    elif r > 0.02 and r < 0.04:
+        hval = findh(0.04, o) * (r - 0.02)/(0.04 - 0.02)
     else:
         hval = brentq(lambda h:f(r, h, o), 0, o)
-        if r > 0.02 and r < 0.04:
-            hval *= (r - 0.02)/(0.04 - 0.02)
+
     #print(hval)
     return hval
 
-def findHoriWidth(h, o): #(r, h, o)
+def findHoriWidth(r, h, o):
+    #if r > 0.02 and r < 0.04:
+
+        #width =  2 * r * atan((pi * h) / d) #based on r and h (from custom equations)
+    #else:
+
     width = pow(pow(o, 2) - pow(h, 2), 0.5) #based on o and h using pythagoras
-    #width =  2 * r * atan((pi * h) / d) #based on r and h (from custom equations)
+    if r < 0.07 and width <= 0.015:
+        width = 0.015
     return width;
 
 def formdatastring(r, h, w, fullstring):
@@ -58,7 +68,7 @@ fullstring = ""
 r = 0
 o = findParralelWidth(r)
 h = 0
-w = findHoriWidth(h, o)
+w = findHoriWidth(r, h, o)
 fullstring = formdatastring(r, h, w, fullstring)
 
 for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
@@ -68,7 +78,7 @@ for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lin
     else:
         o = findParralelWidth(r)
     h = findh(r, o)
-    w = findHoriWidth(h, o)
+    w = findHoriWidth(r, h, o)
     fullstring = formdatastring(r, h, w, fullstring)
 
 
