@@ -1,0 +1,5 @@
+start milling operation:
+nohup python3 gcodesender.py /dev/ttyUSB0 -f filename.nc
+
+scp filetransfer command:
+scp "Ferdinand Hubbard"@192.168.1.6:"C://filename.nc" filename.nc

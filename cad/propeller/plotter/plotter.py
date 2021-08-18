@@ -10,7 +10,7 @@ initialwidth = 0.015
 issurface = True
 surfacepwidthconst = 50 * 0.001
 ismirror = True
-
+proplength = 0.66 #(m)
 def quardraticFunction(input, a0, a1, a2):
     return a0 * pow(input, 2) + a1 * input + a2
 def findParralelWidth(r): #function that matches my parralel width requirements
@@ -70,60 +70,76 @@ def findHoriWidth(r, h, o):
         width = initialwidth * multiplier
     return width;
 
-def formdatastring(r, h, w, fullstring):
+def formdatastring(r, h, w):
     outputstr = str(w * -1000) + " " + str(r * 1000) + " " + str(h * 1000)
     print(outputstr)
-    fullstring += outputstr + "\n"
-    return fullstring
+    return outputstr
 
-fullstring = ""
-mirror0 = ""
-mirror1 = ""
-mirror2 = ""
-mirror3 = ""
-r = 0
-o = findParralelWidth(r)
-h = 0
-w = findHoriWidth(r, h, o)
-fullstring = formdatastring(r, h, w, fullstring)
+def writeToFile(file, data): #file is opened file. data is array of strings
+    for i in range(len(data)):
+        file.write(data[i] + "\n")
 
-for i in range(1, 331):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
+def doStep(i):
     r = i * 0.001
-
-    if i == 330: #because autodesk joins 3d guide line and 2d sweep line togeter because they share a point otherwise
+    if i > 330:
+        r = 330 * 0.001
+    if r == 330 * 0.001: #because autodesk joins 3d guide line and 2d sweep line togeter because they share a point otherwise
         o = 0.0001
     else:
         o = findParralelWidth(r)
     if issurface:
         surfmultiplier = surfacepwidthconst/o
+
     h = findh(r, o)
     w = findHoriWidth(r, h, o)
     h *= surfmultiplier
     w *= surfmultiplier
+    if i > 330:
+        r = i * 0.001
     if ismirror:
-        mirror0 = formdatastring(r, h, w, mirror0)
-        if h != 0:
-            mirror1 = formdatastring(r, h*-1, w, mirror1)
-        if r != 0:
-            mirror2 = formdatastring(r*-1, h, w, mirror2)
-        if r != 0 and h != 0:
-            mirror3 = formdatastring(r*-1, h*-1, w, mirror3)
+        mirror0.append(formdatastring(r, h, w))
+        #if h != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
+        mirror1.append(formdatastring(r, h*-1, initialwidth - w))
+        #if r != 0 or h != 0:
+        mirror2.append(formdatastring(r*-1, h*-1, w))
+        #if r != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
+        mirror3.append(formdatastring(r*-1, h, initialwidth - w))
     else:
-        fullstring = formdatastring(r, h, w, fullstring)
+        fullstring.append(formdatastring(r, h, w))
+
+
+fullstring = []
+mirror0 = []
+mirror1 = []
+mirror2 = []
+mirror3 = []
+r = 0
+o = findParralelWidth(r)
+if issurface:
+    surfmultiplier = surfacepwidthconst/o
+h = 0
+w = findHoriWidth(r, h, o)
+h *= surfmultiplier
+w *= surfmultiplier
+if not issurface:
+    fullstring.append(formdatastring(r, h, w))
+    mirror0.append(formdatastring(r, h, w))
+
+
+for i in range(1, int(proplength*1000/2 + 1 + 50)):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
+    doStep(i)
+
+
 if ismirror:
-    for i in range(0, 4):
-        f = open("mirror" + str(i) + ".txt", "w+")
-        if i == 0:
-            f.write(mirror0)
-        if i == 1:
-            f.write(mirror1)
-        if i == 2:
-            f.write(mirror2)
-        if i == 3:
-            f.write(mirror3)
-        f.close()
+
+    f = open("mirror.txt", "w+")
+    writeToFile(f, mirror0)
+    writeToFile(f, mirror1[::-1])
+    writeToFile(f, mirror3)
+    writeToFile(f, mirror2[::-1])
+    f.close()
 
 
 f = open("file.txt", "w+")
-f.write(fullstring)
+writeToFile(f, fullstring)
 f.close()
