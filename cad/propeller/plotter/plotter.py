@@ -2,12 +2,16 @@
 from math import pow, pi, atan
 from scipy.optimize import brentq
 #all units in metres except for final output
+elongate = True
+extsurface = False
+extsurfaceconst = 0.1
 d = 0.6  #pitch = 0.6 m
-multiplier = 1 #based on position of sweep path
-surfmultiplier = 1
+multiplier = 0.5 #based on position of sweep path
 initialwidth = 0.015
 #o = 0.03 #parralel width = 0.03 m
 issurface = True
+ismultipliedsurface = False
+surfacemultiplier = 1
 surfacepwidthconst = 50 * 0.001
 ismirror = True
 proplength = 0.66 #(m)
@@ -67,7 +71,7 @@ def findHoriWidth(r, h, o):
 
     width = pow(pow(o, 2) - pow(h, 2), 0.5) #based on o and h using pythagoras
     if r < 0.07 and width <= initialwidth * multiplier:
-        width = initialwidth * multiplier
+        width = initialwidth * multiplier #when rail is in center of profile
     return width;
 
 def formdatastring(r, h, w):
@@ -81,29 +85,42 @@ def writeToFile(file, data): #file is opened file. data is array of strings
 
 def doStep(i):
     r = i * 0.001
+
     if i > 330:
         r = 330 * 0.001
     if r == 330 * 0.001: #because autodesk joins 3d guide line and 2d sweep line togeter because they share a point otherwise
-        o = 0.0001
+        o = 0.0002 * multiplier
     else:
         o = findParralelWidth(r)
-    if issurface:
-        surfmultiplier = surfacepwidthconst/o
 
     h = findh(r, o)
+
+    if i == 0:
+        h = 0
+
     w = findHoriWidth(r, h, o)
-    h *= surfmultiplier
-    w *= surfmultiplier
+
+    if ismultipliedsurface:
+        surfacemultiplier = surfacepwidthconst/o
+
+    if ismultipliedsurface:
+        h *= surfacemultiplier
+        w *= surfacemultiplier
+    if extsurface:
+        w += extsurfaceconst
+
+    #print(str(w) + "\n")
     if i > 330:
         r = i * 0.001
     if ismirror:
         mirror0.append(formdatastring(r, h, w))
         #if h != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
-        mirror1.append(formdatastring(r, h*-1, initialwidth - w))
-        #if r != 0 or h != 0:
-        mirror2.append(formdatastring(r*-1, h*-1, w))
-        #if r != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
-        mirror3.append(formdatastring(r*-1, h, initialwidth - w))
+        mirror1.append(formdatastring(r, h*-1, -w)) #initialwidth - w for reverse
+
+        if r != 0 or h != 0:
+            mirror2.append(formdatastring(r*-1, h*-1, w))
+        if r != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
+            mirror3.append(formdatastring(r*-1, h, -w))
     else:
         fullstring.append(formdatastring(r, h, w))
 
@@ -113,32 +130,42 @@ mirror0 = []
 mirror1 = []
 mirror2 = []
 mirror3 = []
-r = 0
-o = findParralelWidth(r)
-if issurface:
-    surfmultiplier = surfacepwidthconst/o
-h = 0
-w = findHoriWidth(r, h, o)
-h *= surfmultiplier
-w *= surfmultiplier
-if not issurface:
-    fullstring.append(formdatastring(r, h, w))
-    mirror0.append(formdatastring(r, h, w))
 
+length = 0
+if extsurface or ismultipliedsurface or elongate:
+    length = int(proplength*1000/2 + 1 + 50)
+else:
+    length = int(proplength*1000/2 + 1)
 
-for i in range(1, int(proplength*1000/2 + 1 + 50)):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
+for i in range(0, length):#-1 because last case is a problem in cad (it links 2 lines together which I don't want)
     doStep(i)
 
 
-if ismirror:
-
-    f = open("mirror.txt", "w+")
+if issurface:
+    filename = "surface.txt"
+    if extsurface:
+        filename = "extsurface.txt"
+    f = open(filename, "w+")
     writeToFile(f, mirror0)
     writeToFile(f, mirror1[::-1])
     writeToFile(f, mirror3)
     writeToFile(f, mirror2[::-1])
     f.close()
+else:
 
+    f = open("mirror1.txt", "w+")
+    writeToFile(f, mirror1)
+    f.close()
+    f = open("mirror2.txt", "w+")
+    writeToFile(f, mirror3)
+    f.close()
+
+    f = open("mirror3.txt", "w+")
+    writeToFile(f, mirror2)
+    f.close()
+    f = open("mirror4.txt", "w+")
+    writeToFile(f, mirror0)
+    f.close()
 
 f = open("file.txt", "w+")
 writeToFile(f, fullstring)
