@@ -2,14 +2,16 @@
 from math import pow, pi, atan
 from scipy.optimize import brentq
 #all units in metres except for final output
-elongate = True
-extsurface = False
-extsurfaceconst = 0.1
+widthoffset = 0*0.001
+hoffset = 0*0.001
+elongate = False
+extsurface = True
+extsurfaceconst = 30*0.001
 d = 0.6  #pitch = 0.6 m
 multiplier = 0.5 #based on position of sweep path
 initialwidth = 0.015
 #o = 0.03 #parralel width = 0.03 m
-issurface = True
+ispatch = True
 ismultipliedsurface = False
 surfacemultiplier = 1
 surfacepwidthconst = 50 * 0.001
@@ -99,7 +101,6 @@ def doStep(i):
         h = 0
 
     w = findHoriWidth(r, h, o)
-
     if ismultipliedsurface:
         surfacemultiplier = surfacepwidthconst/o
 
@@ -108,19 +109,19 @@ def doStep(i):
         w *= surfacemultiplier
     if extsurface:
         w += extsurfaceconst
-
     #print(str(w) + "\n")
+    w += widthoffset
     if i > 330:
         r = i * 0.001
     if ismirror:
-        mirror0.append(formdatastring(r, h, w))
+        mirror0.append(formdatastring(r, h+hoffset, w))
         #if h != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
-        mirror1.append(formdatastring(r, h*-1, -w)) #initialwidth - w for reverse
+        mirror1.append(formdatastring(r, h*-1+hoffset, -w)) #initialwidth - w for reverse
 
         if r != 0 or h != 0:
-            mirror2.append(formdatastring(r*-1, h*-1, w))
+            mirror2.append(formdatastring(r*-1, h*-1+hoffset, w))
         if r != 0 or (w != initialwidth/2 and w != -1*initialwidth/2):
-            mirror3.append(formdatastring(r*-1, h, -w))
+            mirror3.append(formdatastring(r*-1, h+hoffset, -w))
     else:
         fullstring.append(formdatastring(r, h, w))
 
@@ -132,7 +133,7 @@ mirror2 = []
 mirror3 = []
 
 length = 0
-if extsurface or ismultipliedsurface or elongate:
+if elongate:
     length = int(proplength*1000/2 + 1 + 50)
 else:
     length = int(proplength*1000/2 + 1)
@@ -141,7 +142,7 @@ for i in range(0, length):#-1 because last case is a problem in cad (it links 2 
     doStep(i)
 
 
-if issurface:
+if ispatch:
     filename = "surface.txt"
     if extsurface:
         filename = "extsurface.txt"
