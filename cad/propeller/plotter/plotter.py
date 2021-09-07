@@ -6,7 +6,7 @@ widthoffset = 0*0.001
 hoffset = 0*0.001
 elongate = False
 extsurface = True
-extsurfaceconst = 30*0.001
+extsurfaceconst = (15+7.5)*0.001
 d = 0.6  #pitch = 0.6 m
 multiplier = 0.5 #based on position of sweep path
 initialwidth = 0.015
